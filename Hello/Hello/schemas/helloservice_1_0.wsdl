@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Hello" targetNamespace="http://soa.o2.co.uk/helloservice_1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xhd="http://soa.o2.co.uk/hellodata_1" xmlns:xhs="http://soa.o2.co.uk/helloservice_1">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soa.o2.co.uk/hellodata_1" schemaLocation="hellodata_1_0.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="testHello">
+		<wsdl:part name="testHello" element="xhd:testHello"/>
+	</wsdl:message>
+	<wsdl:message name="testHelloResponse">
+		<wsdl:part name="testHelloResponse" element="xhd:testHelloResponse"/>
+	</wsdl:message>
+	<wsdl:message name="testHelloFault">
+		<wsdl:part name="testHelloFault" element="xhd:testHelloFault"/>
+	</wsdl:message>
+	<wsdl:message name="testFault">
+		<wsdl:part name="testFault" element="xhd:testFault"/>
+	</wsdl:message>
+	<wsdl:message name="testFaultResponse">
+		<wsdl:part name="testFaultResponse" element="xhd:testFaultResponse"/>
+	</wsdl:message>
+	<wsdl:message name="testFaultFault">
+		<wsdl:part name="testFaultFault" element="xhd:testFaultFault"/>
+	</wsdl:message>
+	<wsdl:portType name="HelloPort">
+		<wsdl:operation name="testHello">
+			<wsdl:input name="testHello" message="xhs:testHello"/>
+			<wsdl:output name="testHelloResponse" message="xhs:testHelloResponse"/>
+			<wsdl:fault name="testHelloFault" message="xhs:testHelloFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="testFault">
+			<wsdl:input name="testFault" message="xhs:testFault"/>
+			<wsdl:output name="testFaultResponse" message="xhs:testFaultResponse"/>
+			<wsdl:fault name="testFaultFault" message="xhs:testFaultFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="HelloBinding" type="xhs:HelloPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="testHello">
+			<soap:operation soapAction=""/>
+			<wsdl:input name="testHello">
+				<soap:body parts="testHello" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="testHelloResponse">
+				<soap:body parts="testHelloResponse" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="testHelloFault">
+				<soap:fault name="testHelloFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="testFault">
+			<soap:operation soapAction=""/>
+			<wsdl:input name="testFault">
+				<soap:body parts="testFault" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="testFaultResponse">
+				<soap:body parts="testFaultResponse" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="testFaultFault">
+				<soap:fault name="testFaultFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="HelloService">
+		<wsdl:port name="HelloPort" binding="xhs:HelloBinding">
+			<soap:address location="https://soagateway.soa.o2.co.uk/services/Hello_1_0"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
