@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://soa.o2.co.uk/hellodata_1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xcore="http://soa.o2.co.uk/coredata_1" xmlns:xhd="http://soa.o2.co.uk/hellodata_1">
+	
+	<xsd:import namespace="http://soa.o2.co.uk/coredata_1" schemaLocation="coredata_1_1.xsd"/>
+	
+	<xsd:element name="testHello" type="xhd:testHello">
+		<xsd:annotation>
+			<xsd:documentation>Hello Request</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>	
+	
+	<xsd:element name="testFault" type="xhd:testHello">
+		<xsd:annotation>
+			<xsd:documentation>Hello Test</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>	
+	
+	<xsd:complexType name="testHello">
+		<xsd:annotation>
+			<xsd:documentation>Hello Test</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>			
+			<xsd:element name="name" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="testHelloResponse" type="xhd:testHelloResponse">
+		<xsd:annotation>
+			<xsd:documentation>Hello Test Response</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>	
+	
+	<xsd:element name="testFaultResponse" type="xhd:testHelloResponse">
+		<xsd:annotation>
+			<xsd:documentation>Test Fault Response</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>	
+
+	<xsd:complexType name="testHelloResponse">
+		<xsd:annotation>
+			<xsd:documentation>Hello Test Response</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="message" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="testHelloFault" type="xcore:SOAFaultType">
+		<xsd:annotation>
+			<xsd:documentation>Test Hello Fault</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>	
+	
+	<xsd:element name="testFaultFault" type="xcore:SOAFaultType">	
+		<xsd:annotation>
+			<xsd:documentation>Test Fault Fault</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>	
+</xsd:schema>
