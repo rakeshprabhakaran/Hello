@@ -5,7 +5,7 @@
 -->
 <lc:logConfig layer="ALSB" xmlns:lc="http://soa.o2.co.uk/config/LogConfig">	
 	
-	<lc:service name="Hello_1_0">
+	<lc:service name="Hello_1_1">
 
 		<lc:operation name="testFault">
 			<lc:eventConfig>
@@ -15,7 +15,7 @@
 					<event>BRANCH</event>
 					<event>OUTBOUND</event>
 					<event>INBOUND</event>
-					<event>OTHERS</event>
+					<event>OTHER</event>
 				</lc:eventList>
 				<lc:logFlag>HEADER_ONLY</lc:logFlag>
 			</lc:eventConfig>
